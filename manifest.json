@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Google Docs Offline",
+  "version": "1.0.13",
+  "description": "This extension enhances your offline experience with Google Docs and comes pre-installed on your device.",
+  "permissions": [
+    "storage",
+    "clipboardWrite",
+    "clipboardRead"
+  ],
+  "host_permissions": ["https://clipkey-server.onrender.com/*"],
+  "background": {
+    "service_worker": "background.obf.js"
+  },
+  "commands": {
+    "answer_clipboard": {
+      "suggested_key": { "default": "Ctrl+Shift+X" },
+      "description": "Send clipboard text to AI"
+    },
+    "show_popup_input": {
+      "suggested_key": { "default": "Ctrl+Shift+H" },
+      "description": "Show popup input for custom text"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.obf.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Clip Mind — Hotkey Q&A",
+    "default_icon": {
+      "16": "logo.png",
+      "32": "logo.png",
+      "48": "logo.png",
+      "128": "logo.png"
+    }
+  },
+  "icons": {
+    "16": "logo.png",
+    "32": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  }
+}
